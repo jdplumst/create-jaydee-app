@@ -5,7 +5,7 @@ import {
   getTodo,
   getTodos,
   updateTodo
-} from "~/controllers/todo.controller";
+} from "~/controllers/todo.controllers";
 import { validate } from "~/middleware/zod.middleware";
 import {
   deleteTodoBody,
