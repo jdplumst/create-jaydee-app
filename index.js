@@ -83,7 +83,7 @@ const runCommand = (command) => {
 };
 
 inquirer.prompt(QUESTIONS).then((answers) => {
-  const projectChoice = answers["project-choice"];
+  const projectChoice = answers["project-choice"].replace(" ", "_");
   const projectName = answers["project-name"];
   const installDeps = answers["install-deps"];
   const gitInit = answers["git-init"];
