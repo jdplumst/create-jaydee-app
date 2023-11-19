@@ -6,6 +6,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 const CURR_DIR = process.cwd();
 const __dirname = dirname(fileURLToPath(import.meta.url));
+import { execSync } from "child_process";
 
 const CHOICES = fs.readdirSync(`${__dirname}/templates`);
 
@@ -25,6 +26,16 @@ const QUESTIONS = [
       else
         return "Project name may only include letters, numbers, underscores and hashes.";
     }
+  },
+  {
+    name: "install-deps",
+    type: "confirm",
+    message: "Do you want us to install the dependencies?"
+  },
+  {
+    name: "git-init",
+    type: "confirm",
+    message: "Do you want us to initialize git?"
   }
 ];
 
@@ -57,12 +68,43 @@ const createDirectoryContents = (templatePath, newProjectPath) => {
   });
 };
 
+const runCommand = (command) => {
+  try {
+    execSync(`${command}`, { stdio: "inherit" });
+  } catch (e) {
+    console.error(`Failed to execute ${command}`, e);
+    return false;
+  }
+  return true;
+};
+
 inquirer.prompt(QUESTIONS).then((answers) => {
   const projectChoice = answers["project-choice"];
   const projectName = answers["project-name"];
+  const installDeps = answers["install-deps"];
+  const gitInit = answers["git-init"];
   const templatePath = `${__dirname}/templates/${projectChoice}`;
 
   fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
   createDirectoryContents(templatePath, projectName);
+
+  const installDepsCommand = `cd ${projectName} && npm install && npm update --save && cd ../`;
+  const gitInitCommand = `cd ${projectName} && git init && touch .gitignore && echo "node_modules" >> .gitignore && cd ../`;
+  const moveDirectoryCommand = `cd ${projectName}`;
+
+  if (installDeps) {
+    console.log("Installing dependencies");
+    runCommand(installDepsCommand);
+  }
+
+  if (gitInit) {
+    console.log("Initializing git");
+    runCommand(gitInitCommand);
+  }
+
+  runCommand(moveDirectoryCommand);
+  console.log(
+    `Your project is ready!\nNext steps:\n  Enter cd ${projectName} into the cli\n  Make sure to follow the instructions on the README. \n  Happy coding!`
+  );
 });
