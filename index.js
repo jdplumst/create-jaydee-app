@@ -8,7 +8,11 @@ const CURR_DIR = process.cwd();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import { execSync } from "child_process";
 
-const CHOICES = fs.readdirSync(`${__dirname}/templates`);
+let CHOICES = fs.readdirSync(`${__dirname}/templates`);
+
+for (let x in CHOICES) {
+  CHOICES[x] = CHOICES[x].replace("_", " ");
+}
 
 const QUESTIONS = [
   {
