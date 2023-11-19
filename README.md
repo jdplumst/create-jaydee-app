@@ -9,6 +9,14 @@ This is a way to start up an appliation using the tools I like to use, including
 - [PostgreSQL](https://www.postgresql.org/) using [Supabase](https://supabase.com/)
 - [ESLint](https://eslint.org/)
 
+## How to Use
+- `git clone https://github.com/jdplumst/create-jaydee-app.git`
+- `cd create-jaydee-app`
+- `npm install -g .`
+
+Then from any directory, you can use the following command to create your own app using one of the templates:
+- `create-jaydee-app`
+
 ## Credits
 
 A lot of the code I used to create this CLI tool came from [this video from Leo Roese](https://www.youtube.com/watch?v=xYko2bHNgVA) and [this video from bonsaiilabs](https://www.youtube.com/watch?v=UxdSoefSxrA).
