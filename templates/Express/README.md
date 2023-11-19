@@ -1,6 +1,13 @@
 # Create Jaydee App
 
-This is a Jaydee App. This is a quick way to start up an application with TypeScript. Currently, the only option is for an Express server.
+This is a Jaydee App. This is a quick way to start up an application with TypeScript.
+
+There are currently two templates available:
+
+- Express
+- Express (Vercel)
+
+These templates are very similar with the Express (Vercel) template being configured to be deployed on Vercel.
 
 This is a way to start up an appliation using the tools I like to use, including:
 
