@@ -1,7 +1,7 @@
 import { index, pgTableCreator, serial, varchar } from "drizzle-orm/pg-core";
 
 // Change this table prefix
-export const pgTable = pgTableCreator((name) => `todo-express_${name}`);
+export const pgTable = pgTableCreator((name) => `express-todo_${name}`);
 
 export const todo = pgTable(
   "todo",
