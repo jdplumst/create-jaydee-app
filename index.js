@@ -90,8 +90,7 @@ inquirer.prompt(QUESTIONS).then((answers) => {
   createDirectoryContents(templatePath, projectName);
 
   const installDepsCommand = `cd ${projectName} && npm install && npm update --save && cd ../`;
-  const gitInitCommand = `cd ${projectName} && git init && touch .gitignore && echo "node_modules" >> .gitignore && cd ../`;
-  const moveDirectoryCommand = `cd ${projectName}`;
+  const gitInitCommand = `cd ${projectName} && git init && touch .gitignore && echo "node_modules" >> .gitignore && echo ".env" >> .gitignore && cd ../`;
 
   if (installDeps) {
     console.log("Installing dependencies");
@@ -103,7 +102,6 @@ inquirer.prompt(QUESTIONS).then((answers) => {
     runCommand(gitInitCommand);
   }
 
-  runCommand(moveDirectoryCommand);
   console.log(
     `Your project is ready!\nNext steps:\n  Enter cd ${projectName} into the cli\n  Make sure to follow the instructions on the README. \n  Happy coding!`
   );
