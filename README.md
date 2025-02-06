@@ -1,6 +1,8 @@
 # Create Jaydee App
 
-This is a Jaydee App. This is a quick way to start up an application with TypeScript.
+**This will be rewritten as to use fullstack technologies that I like to use.**
+
+This is Create Jaydee App. This is a quick way to start up an application with TypeScript.
 
 There are currently two templates available:
 
