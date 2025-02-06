@@ -1,6 +1,6 @@
 # Create Jaydee App
 
-**This will be rewritten as to use fullstack technologies that I like to use.**
+**This will be rewritten to use fullstack technologies that I like to use.**
 
 This is Create Jaydee App. This is a quick way to start up an application with TypeScript.
 
