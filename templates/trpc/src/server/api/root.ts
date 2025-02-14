@@ -1,4 +1,4 @@
-import { greetingRouter } from "~/server/api/routers/pokemon";
+import { greetingRouter } from "~/server/api/routers/greeting";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 
 export const appRouter = createTRPCRouter({

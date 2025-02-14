@@ -6,6 +6,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { createDirectoryContents } from "./utils/createDirectoryContents.js";
+import { addPackageDependency } from "./utils/addPackageDependency.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -45,6 +46,20 @@ async function main() {
 
     const templatePath = path.join(__dirname, "../templates/trpc");
     createDirectoryContents(templatePath, projectName);
+    addPackageDependency({
+      dependencies: [
+        "@trpc/client",
+        "@trpc/server",
+        "@trpc/next",
+        "@trpc/react-query",
+        "@trpc/next",
+        "@tanstack/react-query",
+        "superjson",
+        "server-only",
+      ],
+      devMode: false,
+      projectDir: projectPath,
+    });
   }
 
   const drizzle = await confirm({
@@ -56,6 +71,21 @@ async function main() {
 
     const templatePath = path.join(__dirname, "../templates/drizzle");
     createDirectoryContents(templatePath, projectName);
+    addPackageDependency({
+      dependencies: [
+        "drizzle-orm",
+        "drizzle-kit",
+        "eslint-plugin-drizzle",
+        "@libsql/client",
+      ],
+      devMode: false,
+      projectDir: projectPath,
+    });
+    addPackageDependency({
+      dependencies: ["drizzle-kit", "eslint-plugin-drizzle"],
+      devMode: true,
+      projectDir: projectPath,
+    });
 
     if (trpc) {
       const templatePath = path.join(__dirname, "../templates/trpc+drizzle");
@@ -64,11 +94,6 @@ async function main() {
   }
 
   // const prompts = await inquirer.prompt([
-  //   {
-  //     type: "confirm",
-  //     name: "trpc",
-  //     message: "Would you like to use tRPC?",
-  //   },
   //   {
   //     type: "confirm",
   //     name: "playwright",
