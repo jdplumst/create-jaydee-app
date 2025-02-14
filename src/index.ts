@@ -56,6 +56,11 @@ async function main() {
 
     const templatePath = path.join(__dirname, "../templates/drizzle");
     createDirectoryContents(templatePath, projectName);
+
+    if (trpc) {
+      const templatePath = path.join(__dirname, "../templates/trpc+drizzle");
+      createDirectoryContents(templatePath, projectName);
+    }
   }
 
   // const prompts = await inquirer.prompt([
