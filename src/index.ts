@@ -108,6 +108,11 @@ async function main() {
         projectDir: projectPath,
       });
     }
+
+    if (betterAuth && trpc) {
+      const templatePath = path.join(__dirname, "../templates/trpc+betterauth");
+      createDirectoryContents(templatePath, projectName);
+    }
   }
 
   // const prompts = await inquirer.prompt([
