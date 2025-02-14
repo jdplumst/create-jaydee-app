@@ -12,6 +12,9 @@ const __dirname = dirname(__filename);
 
 async function main() {
   const tools: string[] = [];
+  const CURR_DIR = process.cwd();
+  let projectPath = CURR_DIR;
+  let projectName = "";
 
   await input({
     message: "What is your project name?",
@@ -23,23 +26,34 @@ async function main() {
         return `Directory with name ${input} already exists`;
       }
 
-      const CURR_DIR = process.cwd();
-      fs.mkdirSync(`${CURR_DIR}/${input}`);
+      projectPath = `${CURR_DIR}/${input}`;
+      projectName = input;
+      fs.mkdirSync(projectPath);
 
       const templatePath = path.join(__dirname, "../templates/base");
-      console.log(templatePath);
-      createDirectoryContents(templatePath, input);
+      createDirectoryContents(templatePath, projectName);
       return true;
     },
   });
 
-  const drizzle = await confirm({
-    message: "Would you like to use Drizzle?",
+  const trpc = await confirm({
+    message: "Would you like to use tRPC?",
   });
 
-  if (drizzle) {
-    tools.push("drizzle");
+  if (trpc) {
+    tools.push("trpc");
+
+    const templatePath = path.join(__dirname, "../templates/trpc");
+    createDirectoryContents(templatePath, projectName);
   }
+
+  // const drizzle = await confirm({
+  //   message: "Would you like to use Drizzle?",
+  // });
+
+  // if (drizzle) {
+  //   tools.push("drizzle");
+  // }
 
   // const prompts = await inquirer.prompt([
   //   {

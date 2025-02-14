@@ -7,7 +7,6 @@ export const createDirectoryContents = (
   const CURR_DIR = process.cwd();
 
   const filesToCreate = fs.readdirSync(templatePath);
-  console.log(templatePath);
 
   filesToCreate.forEach((file) => {
     const origFilePath = `${templatePath}/${file}`;
@@ -24,7 +23,9 @@ export const createDirectoryContents = (
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
       fs.writeFileSync(writePath, contents, "utf8");
     } else if (stats.isDirectory()) {
-      fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
+      if (!fs.existsSync(`${CURR_DIR}/${newProjectPath}/${file}`)) {
+        fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
+      }
 
       // recursive call
       createDirectoryContents(
