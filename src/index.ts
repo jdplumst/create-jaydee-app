@@ -47,13 +47,16 @@ async function main() {
     createDirectoryContents(templatePath, projectName);
   }
 
-  // const drizzle = await confirm({
-  //   message: "Would you like to use Drizzle?",
-  // });
+  const drizzle = await confirm({
+    message: "Would you like to use Drizzle?",
+  });
 
-  // if (drizzle) {
-  //   tools.push("drizzle");
-  // }
+  if (drizzle) {
+    tools.push("drizzle");
+
+    const templatePath = path.join(__dirname, "../templates/drizzle");
+    createDirectoryContents(templatePath, projectName);
+  }
 
   // const prompts = await inquirer.prompt([
   //   {
