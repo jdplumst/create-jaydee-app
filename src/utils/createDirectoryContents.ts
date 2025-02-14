@@ -15,13 +15,17 @@ export const createDirectoryContents = (
     const stats = fs.statSync(origFilePath);
 
     if (stats.isFile()) {
-      const contents = fs.readFileSync(origFilePath, "utf8");
+      if (file === "favicon.ico") {
+        const contents = fs.readFileSync(origFilePath, "binary");
 
-      // Rename
-      if (file === ".npmignore") file = ".gitignore";
+        const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
+        fs.writeFileSync(writePath, contents, "binary");
+      } else {
+        const contents = fs.readFileSync(origFilePath, "utf8");
 
-      const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
-      fs.writeFileSync(writePath, contents, "utf8");
+        const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
+        fs.writeFileSync(writePath, contents, "utf8");
+      }
     } else if (stats.isDirectory()) {
       if (!fs.existsSync(`${CURR_DIR}/${newProjectPath}/${file}`)) {
         fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
