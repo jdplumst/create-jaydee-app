@@ -91,6 +91,23 @@ async function main() {
       const templatePath = path.join(__dirname, "../templates/trpc+drizzle");
       createDirectoryContents(templatePath, projectName);
     }
+
+    // Only add Better Auth if Drizzle is enabled
+
+    const betterAuth = await confirm({
+      message: "Would you like to use BetterAuth?",
+    });
+
+    if (betterAuth) {
+      tools.push("betterauth");
+      const templatePath = path.join(__dirname, "../templates/betterauth");
+      createDirectoryContents(templatePath, projectName);
+      addPackageDependency({
+        dependencies: ["better-auth"],
+        devMode: false,
+        projectDir: projectPath,
+      });
+    }
   }
 
   // const prompts = await inquirer.prompt([

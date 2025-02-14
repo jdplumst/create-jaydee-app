@@ -13,5 +13,8 @@ export const dependencyVersionMap = {
   "@tanstack/react-query": "^5.50.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
+
+  // BetterAuth
+  "better-auth": "^1.1.18",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
