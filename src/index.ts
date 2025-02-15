@@ -93,7 +93,6 @@ async function main() {
     }
 
     // Only add Better Auth if Drizzle is enabled
-
     const betterAuth = await confirm({
       message: "Would you like to use BetterAuth?",
     });
@@ -115,16 +114,26 @@ async function main() {
     }
   }
 
+  const playwright = await confirm({
+    message: "Would you like to use Playwright?",
+  });
+
+  if (playwright) {
+    tools.push("playwright");
+    const templatePath = path.join(__dirname, "../templates/playwright");
+    createDirectoryContents(templatePath, projectName);
+    addPackageDependency({
+      dependencies: ["@playwright/test"],
+      devMode: true,
+      projectDir: projectPath,
+    });
+  }
+
   // const prompts = await inquirer.prompt([
   //   {
   //     type: "confirm",
   //     name: "playwright",
   //     message: "Would you like to use Playwright?",
-  //   },
-  //   {
-  //     type: "confirm",
-  //     name: "betterauth",
-  //     message: "Would you like to use Better Auth?",
   //   },
   //   {
   //     type: "confirm",

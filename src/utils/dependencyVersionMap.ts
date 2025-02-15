@@ -16,5 +16,8 @@ export const dependencyVersionMap = {
 
   // BetterAuth
   "better-auth": "^1.1.18",
+
+  // Playwright
+  "@playwright/test": "^1.48.2",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
