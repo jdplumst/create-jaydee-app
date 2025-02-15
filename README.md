@@ -1,33 +1,59 @@
 # Create Jaydee App
 
-**This will be rewritten to use fullstack technologies that I like to use.**
+This is a project created with Create Jaydee App.
 
-This is Create Jaydee App. This is a quick way to start up an application with TypeScript.
+## Tech Stack
 
-There are currently two templates available:
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- tRPC
+- Drizzle
+- Better Auth
+- Playwright
+- GitHub Actions
 
-- Express
-- Express (Vercel)
+When selecting Drizzle for your database, the configuration will use Turso. Make sure to set up a Turso database yourself [on their website](https://turso.tech/). You can also use a SQLite database locally.
 
-These templates are very similar with the Express (Vercel) template being configured to be deployed on Vercel.
+## Run Locally
 
-This is a way to start up an appliation using the tools I like to use, including:
+Go to the project directory
 
-- [Zod](https://zod.dev/)
-- [Drizzle](https://orm.drizzle.team/)
-- [PostgreSQL](https://www.postgresql.org/) using [Supabase](https://supabase.com/)
-- [ESLint](https://eslint.org/)
+```bash
+  cd my-project
+```
 
-## How to Use
+Install dependencies
 
-- `git clone https://github.com/jdplumst/create-jaydee-app.git`
-- `cd create-jaydee-app`
-- `npm install -g .`
+```bash
+  pnpm install
+```
 
-Then from any directory, you can use the following command to create your own app using one of the templates:
+Start the dev server
 
-- `create-jaydee-app`
+```bash
+  pnpm run dev
+```
 
-## Credits
+## Why Create Jaydee App
 
-A lot of the code I used to create this CLI tool came from [this video from Leo Roese](https://www.youtube.com/watch?v=xYko2bHNgVA) and [this video from bonsaiilabs](https://www.youtube.com/watch?v=UxdSoefSxrA).
+Create Jaydee App takes some of the tools I believe to powerful and enjoyable to use in order to quickly start up a new Next.js application. This project was inspired by [Create T3 App](https://create.t3.gg/) with some differences to make it more suited to how I like to build applications.
+
+React is the industry standard for building web applications and I believe Next.js is the best way to build React applications.
+
+TypeScript is non-negotiable as type safety is vital in ensuring that your applications are secure and scalable. It also allows for end-to-end type safety.
+
+Tailwind CSS is the most efficient way to write CSS. Having your HTML, CSS and JavaScript all together in one file helps to make more readable code.
+
+Shadcn/ui is the easiest way to add new components to your application that you can own and modify on your own. From buttons to sidebars, shadcn/ui makes it easy to create beautiful user interfaces.
+
+tRPC is the best way to query data on the client side. Although fetching data directly on the server and using server actions for mutations is great, there may be times when you need to fetch data directly on the client and tRPC will help make that process seamless.
+
+Drizzle is the best way to write queries to your database. It makes you feel like you are writing raw SQL while still giving you type safety.
+
+Better Auth is an authentication library with great documentation. It allows you to own your own authentication while still helping you make sure your application is secure.
+
+Playwright is the best way to write end-to-end tests for your applications. It can be set up easily to ensure your application doesn't have regressions.
+
+GitHub Actions is an easy way to set up CI/CD for your applications. Use it to test, lint, and typecheck your code before each deployment.

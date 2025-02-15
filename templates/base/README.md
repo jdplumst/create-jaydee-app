@@ -11,6 +11,7 @@ This is a project created with Create Jaydee App.
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
+- shadcn/ui
 - tRPC
 - Drizzle
 - Better Auth
@@ -52,6 +53,8 @@ React is the industry standard for building web applications and I believe Next.
 TypeScript is non-negotiable as type safety is vital in ensuring that your applications are secure and scalable. It also allows for end-to-end type safety.
 
 Tailwind CSS is the most efficient way to write CSS. Having your HTML, CSS and JavaScript all together in one file helps to make more readable code.
+
+Shadcn/ui is the easiest way to add new components to your application that you can own and modify on your own. From buttons to sidebars, shadcn/ui makes it easy to create beautiful user interfaces.
 
 tRPC is the best way to query data on the client side. Although fetching data directly on the server and using server actions for mutations is great, there may be times when you need to fetch data directly on the client and tRPC will help make that process seamless.
 
