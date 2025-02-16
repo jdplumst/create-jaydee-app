@@ -164,6 +164,14 @@ async function main() {
     createDirectoryContents(templatePath, projectName);
   }
 
+  if (githubactions && playwright) {
+    const templatePath = path.join(
+      __dirname,
+      "../templates/playwright+githubactions"
+    );
+    createDirectoryContents(templatePath, projectName);
+  }
+
   // const prompts = await inquirer.prompt([
   //   {
   //     type: "confirm",
