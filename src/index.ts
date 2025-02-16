@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { input, confirm } from "@inquirer/prompts";
+import { input, confirm, select } from "@inquirer/prompts";
 import fs from "fs-extra";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -8,6 +8,7 @@ import { dirname } from "path";
 import { createDirectoryContents } from "./utils/createDirectoryContents.js";
 import { addPackageDependency } from "./utils/addPackageDependency.js";
 import { type PackageJson } from "type-fest";
+import { runCommand } from "./utils/runCommand.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -170,6 +171,25 @@ async function main() {
       "../templates/playwright+githubactions"
     );
     createDirectoryContents(templatePath, projectName);
+  }
+
+  const install = await confirm({
+    message: "Would you like to install the dependencies?",
+  });
+
+  if (install) {
+    const packageManager = await select({
+      message: "What package manager would you like to use?",
+      choices: ["npm", "yarn", "pnpm"],
+    });
+
+    if (packageManager === "npm") {
+      runCommand(`cd ${projectPath} && npm install`);
+    } else if (packageManager === "yarn") {
+      runCommand(`cd ${projectPath} && yarn install`);
+    } else if (packageManager === "pnpm") {
+      runCommand(`cd ${projectPath} && pnpm install`);
+    }
   }
 
   // const prompts = await inquirer.prompt([
