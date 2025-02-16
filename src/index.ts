@@ -154,12 +154,17 @@ async function main() {
     });
   }
 
+  const githubactions = await confirm({
+    message: "Would you like to use GitHub Actions?",
+  });
+
+  if (githubactions) {
+    tools.push("githubactions");
+    const templatePath = path.join(__dirname, "../templates/githubactions");
+    createDirectoryContents(templatePath, projectName);
+  }
+
   // const prompts = await inquirer.prompt([
-  //   {
-  //     type: "confirm",
-  //     name: "githubactions",
-  //     message: "Would you like to use GitHub Actions?",
-  //   },
   //   {
   //     type: "confirm",
   //     name: "git",
