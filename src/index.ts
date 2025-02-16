@@ -44,7 +44,7 @@ async function main() {
   });
 
   if (trpc) {
-    tools.push("trpc");
+    tools.push("tRPC");
 
     const templatePath = path.join(__dirname, "../templates/trpc");
     createDirectoryContents(templatePath, projectName);
@@ -69,7 +69,7 @@ async function main() {
   });
 
   if (drizzle) {
-    tools.push("drizzle");
+    tools.push("Drizzle");
 
     const templatePath = path.join(__dirname, "../templates/drizzle");
     createDirectoryContents(templatePath, projectName);
@@ -113,7 +113,7 @@ async function main() {
     });
 
     if (betterAuth) {
-      tools.push("betterauth");
+      tools.push("Better Auth");
       const templatePath = path.join(__dirname, "../templates/betterauth");
       createDirectoryContents(templatePath, projectName);
       addPackageDependency({
@@ -134,7 +134,7 @@ async function main() {
   });
 
   if (playwright) {
-    tools.push("playwright");
+    tools.push("Playwright");
     const templatePath = path.join(__dirname, "../templates/playwright");
     createDirectoryContents(templatePath, projectName);
     addPackageDependency({
@@ -160,7 +160,7 @@ async function main() {
   });
 
   if (githubactions) {
-    tools.push("githubactions");
+    tools.push("Github Actions");
     const templatePath = path.join(__dirname, "../templates/githubactions");
     createDirectoryContents(templatePath, projectName);
   }
@@ -173,14 +173,22 @@ async function main() {
     createDirectoryContents(templatePath, projectName);
   }
 
+  const git = await confirm({
+    message: "Would you like to initialize a git repository?",
+  });
+
+  if (git) {
+    runCommand(`cd ${projectPath} && git init`);
+  }
+
   const install = await confirm({
     message: "Would you like to install the dependencies?",
   });
 
   if (install) {
-    const packageManager = await select({
+    var packageManager = await select({
       message: "What package manager would you like to use?",
-      choices: ["npm", "yarn", "pnpm"],
+      choices: ["pnpm", "yarn", "npm"],
     });
 
     if (packageManager === "npm") {
@@ -192,18 +200,13 @@ async function main() {
     }
   }
 
-  // const prompts = await inquirer.prompt([
-  //   {
-  //     type: "confirm",
-  //     name: "git",
-  //     message: "Would you like us to initialize a git repository?",
-  //   },
-  //   {
-  //     type: "confirm",
-  //     name: "install",
-  //     message: "Would you like to install the dependencies?",
-  //   },
-  // ]);
+  console.log(
+    `🎉 Successfully created ${projectName} with ${tools.join(", ")}`
+  );
+  console.log("🚀 Run the following commands to start the development server:");
+  console.log(
+    `👉 cd ${projectName} && ${packageManager === "npm" ? "npm run dev" : packageManager === "yarn" ? "yarn dev" : "pnpm run dev"}`
+  );
 }
 
 main();
