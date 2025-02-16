@@ -1,10 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
 
 import "dotenv/config";
-import { env } from "./src/env";
+import getBaseUrl from "~/lib/get-base-url";
 
 export default defineConfig({
-  testDir: "./tests",
+  testDir: "./e2e",
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 2,
@@ -13,7 +13,7 @@ export default defineConfig({
   reportSlowTests: { max: 10, threshold: 60 * 1000 },
   timeout: 120000,
   use: {
-    baseURL: env.NEXTAUTH_URL,
+    baseURL: getBaseUrl(),
     trace: "on-first-retry",
   },
   expect: {

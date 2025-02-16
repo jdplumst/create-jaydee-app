@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { createDirectoryContents } from "./utils/createDirectoryContents.js";
 import { addPackageDependency } from "./utils/addPackageDependency.js";
+import { type PackageJson } from "type-fest";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -87,6 +88,19 @@ async function main() {
       projectDir: projectPath,
     });
 
+    const packageJsonPath = path.join(projectPath, "package.json");
+    const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
+    packageJsonContent.scripts = {
+      ...packageJsonContent.scripts,
+      "db:push": "drizzle-kit push",
+      "db:studio": "drizzle-kit studio",
+      "db:generate": "drizzle-kit generate",
+      "db:migrate": "drizzle-kit migrate",
+    };
+    fs.writeJSONSync(packageJsonPath, packageJsonContent, {
+      spaces: 2,
+    });
+
     if (trpc) {
       const templatePath = path.join(__dirname, "../templates/trpc+drizzle");
       createDirectoryContents(templatePath, projectName);
@@ -127,14 +141,20 @@ async function main() {
       devMode: true,
       projectDir: projectPath,
     });
+
+    const packageJsonPath = path.join(projectPath, "package.json");
+    const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
+    packageJsonContent.scripts = {
+      ...packageJsonContent.scripts,
+      e2e: "playwright test",
+      "e2e:ui": "playwright test --ui",
+    };
+    fs.writeJSONSync(packageJsonPath, packageJsonContent, {
+      spaces: 2,
+    });
   }
 
   // const prompts = await inquirer.prompt([
-  //   {
-  //     type: "confirm",
-  //     name: "playwright",
-  //     message: "Would you like to use Playwright?",
-  //   },
   //   {
   //     type: "confirm",
   //     name: "githubactions",
