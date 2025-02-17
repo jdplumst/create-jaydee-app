@@ -2,10 +2,18 @@
 
 This is a project created with Create Jaydee App.
 
-To get started run:
+To get started run one of the following:
 
 ```bash
-  pnpm create jaydee-app
+  npm create jaydee-app@latest
+```
+
+```bash
+  pnpm create jaydee-app@latest
+```
+
+```bash
+  yarn create jaydee-app@latest
 ```
 
 ## Tech Stack
