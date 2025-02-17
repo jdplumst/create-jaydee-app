@@ -69,14 +69,14 @@ export default [
       "drizzle/enforce-delete-with-where": [
         "error",
         {
-          drizzleObjectName: ["db", "ctx.db"],
+          drizzleObjectName: ["db", "ctx.db", "tx"],
         },
       ],
 
       "drizzle/enforce-update-with-where": [
         "error",
         {
-          drizzleObjectName: ["db", "ctx.db"],
+          drizzleObjectName: ["db", "ctx.db", "tx"],
         },
       ],
 
