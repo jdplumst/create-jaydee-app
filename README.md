@@ -2,6 +2,12 @@
 
 This is a project created with Create Jaydee App.
 
+To get started run:
+
+```bash
+  pnpm create jaydee-app
+```
+
 ## Tech Stack
 
 - Next.js App Router
