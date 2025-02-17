@@ -1,1 +1,5 @@
 node_modules
+
+templates/base/pnpm-lock.yaml
+
+dist

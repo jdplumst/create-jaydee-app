@@ -1,12 +1,10 @@
+
 # Create Jaydee App
 
 This is a project created with Create Jaydee App.
 
-To get started run:
 
-```bash
-  pnpm create jaydee-app
-```
+
 
 ## Tech Stack
 
@@ -22,9 +20,13 @@ To get started run:
 
 When selecting Drizzle for your database, the configuration will use Turso. Make sure to set up a Turso database yourself [on their website](https://turso.tech/). You can also use a SQLite database locally.
 
+
+
 ## Run Locally
 
 Go to the project directory
+
+
 
 ```bash
   cd my-project
