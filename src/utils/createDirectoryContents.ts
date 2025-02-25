@@ -21,6 +21,9 @@ export const createDirectoryContents = (
         const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
         fs.writeFileSync(writePath, contents, "binary");
       } else {
+        // Rename
+        if (file === ".npmignore") file = ".gitignore";
+
         const contents = fs.readFileSync(origFilePath, "utf8");
 
         const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
