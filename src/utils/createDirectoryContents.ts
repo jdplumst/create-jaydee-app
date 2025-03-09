@@ -2,7 +2,7 @@ import fs from "fs-extra";
 
 export const createDirectoryContents = (
   templatePath: string,
-  newProjectPath: string
+  newProjectPath: string,
 ) => {
   const CURR_DIR = process.cwd();
 
@@ -22,7 +22,7 @@ export const createDirectoryContents = (
         fs.writeFileSync(writePath, contents, "binary");
       } else {
         // Rename
-        if (file === ".npmignore") file = ".gitignore";
+        if (file === "_gitignore") file = ".gitignore";
 
         const contents = fs.readFileSync(origFilePath, "utf8");
 
@@ -37,7 +37,7 @@ export const createDirectoryContents = (
       // recursive call
       createDirectoryContents(
         `${templatePath}/${file}`,
-        `${newProjectPath}/${file}`
+        `${newProjectPath}/${file}`,
       );
     }
   });

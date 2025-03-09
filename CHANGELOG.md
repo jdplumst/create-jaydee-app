@@ -1,3 +1,7 @@
+# 2.0.5 - 2025-03-09
+
+- Fix .gitignore not being added
+
 # 2.0.4 - 2025-02-25
 
 - Add @eslint/eslintrc dev dependency
