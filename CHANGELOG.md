@@ -1,3 +1,7 @@
+# 2.0.6 - 2025-03-10
+
+- Fix playwright workflow not skipping env validation
+
 # 2.0.5 - 2025-03-09
 
 - Fix .gitignore not being added
