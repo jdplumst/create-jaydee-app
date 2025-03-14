@@ -1,3 +1,7 @@
+# 2.0.7 - 2025-03-13
+
+- Add playwright and vscode files to .gitignore
+
 # 2.0.6 - 2025-03-10
 
 - Fix playwright workflow not skipping env validation
