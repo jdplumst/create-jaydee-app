@@ -1,3 +1,7 @@
+# 2.0.8 - 2025-03-15
+
+- Allow projects to be created in current directory
+
 # 2.0.7 - 2025-03-13
 
 - Add playwright and vscode files to .gitignore
