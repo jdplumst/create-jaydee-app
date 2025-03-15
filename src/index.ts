@@ -25,13 +25,15 @@ async function main() {
       if (!input) {
         return "Please enter a project name";
       }
-      if (fs.existsSync(input)) {
+      if (fs.existsSync(input) && input !== ".") {
         return `Directory with name ${input} already exists`;
       }
 
-      projectPath = `${CURR_DIR}/${input}`;
-      projectName = input;
-      fs.mkdirSync(projectPath);
+      if (input !== ".") {
+        projectPath = `${CURR_DIR}/${input}`;
+        projectName = input;
+        fs.mkdirSync(projectPath);
+      }
 
       const templatePath = path.join(__dirname, "../templates/base");
       createDirectoryContents(templatePath, projectName);
@@ -168,7 +170,7 @@ async function main() {
   if (githubactions && playwright) {
     const templatePath = path.join(
       __dirname,
-      "../templates/playwright+githubactions"
+      "../templates/playwright+githubactions",
     );
     createDirectoryContents(templatePath, projectName);
   }
@@ -201,11 +203,11 @@ async function main() {
   }
 
   console.log(
-    `🎉 Successfully created ${projectName} with ${tools.join(", ")}`
+    `🎉 Successfully created ${projectName} with ${tools.join(", ")}`,
   );
   console.log("🚀 Run the following commands to start the development server:");
   console.log(
-    `👉 cd ${projectName} && ${packageManager === "npm" ? "npm run dev" : packageManager === "yarn" ? "yarn dev" : "pnpm run dev"}`
+    `${projectName !== "" ? `👉 cd ${projectName} && ` : ``} ${packageManager === "npm" ? "npm run dev" : packageManager === "yarn" ? "yarn dev" : "pnpm run dev"}`,
   );
 }
 
