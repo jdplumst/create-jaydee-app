@@ -1,3 +1,8 @@
+# 2.0.9 - 2025-03-16
+
+- Change eslint to version 8.57.1
+- Add keywords
+
 # 2.0.8 - 2025-03-15
 
 - Allow projects to be created in current directory
