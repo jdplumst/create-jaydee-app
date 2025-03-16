@@ -15,7 +15,20 @@
   "bin": {
     "create-jaydee-app": "dist/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "create-jaydee-app",
+    "react",
+    "nextjs",
+    "trpc",
+    "drizzle",
+    "betterauth",
+    "playwright",
+    "typescript",
+    "tailwind",
+    "shadcn",
+    "eslint",
+    "zod"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
